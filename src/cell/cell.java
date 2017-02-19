@@ -3,7 +3,10 @@ package cell;
 public class cell {
 
 	
-	private boolean state;
+	private static boolean state;
+	private static int maxLive = 3;
+	private static int minLive = 2;
+	private static int nBorn = 3;
 	
 	
 	public cell(){
@@ -12,18 +15,32 @@ public class cell {
 	}
 	
 	
-	public boolean getStateCell(){
+	public static boolean getStateCell(){
 	
 		return state;
 	}
 	
 	
 	
-	public void setStateCell(boolean state){
+	public static void setStateCell(boolean valueState){
 		
-		this.state = state;
+		state = valueState;
 	}
 	
 	
+	public static void checkLife(int nLiveNeighbors){
+		
+		if(state == true){
+		if(nLiveNeighbors > maxLive || nLiveNeighbors < minLive){
+			
+			setStateCell(false);
+			}
+		} else {
+			if(nLiveNeighbors == nBorn ){
+				setStateCell(true);
+			}
+		}
+		
+	}
 	
 }
