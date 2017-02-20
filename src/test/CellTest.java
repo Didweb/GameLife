@@ -4,57 +4,64 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import cell.cell;
+import cell.Cell;
 
 
-public class cellTest {
+public class CellTest {
 	boolean statCell;
 
 
 	@Test
 	public void testGetStateCell() {
-		statCell = cell.getStateCell();
+		statCell = Cell.getStateCell();
 		assertEquals(statCell, false);
 	}
 
 	@Test
 	public void testSetStateCell() {
-		cell.setStateCell(true);
-		statCell = cell.getStateCell();
+		Cell.setStateCell(true);
+		statCell = Cell.getStateCell();
 		assertEquals(statCell, true);
 	}
 
 	
 	@Test
 	public void testcheckLifeNoBorn() {
-		cell.setStateCell(false);
-		cell.checkLife(2);
-		statCell = cell.getStateCell();
+		Cell.setStateCell(false);
+		Cell.checkLife(2);
+		statCell = Cell.getStateCell();
 		assertEquals(statCell, false);
 	}
 	
 	@Test
 	public void testcheckLifeBorn() {
-		cell.setStateCell(false);
-		cell.checkLife(3);
-		statCell = cell.getStateCell();
+		Cell.setStateCell(false);
+		Cell.checkLife(3);
+		statCell = Cell.getStateCell();
 		assertEquals(statCell, true);
 	}
 	
 	@Test
 	public void testcheckLifeDeadSolitude() {
-		cell.setStateCell(true);
-		cell.checkLife(1);
-		statCell = cell.getStateCell();
+		Cell.setStateCell(true);
+		Cell.checkLife(1);
+		statCell = Cell.getStateCell();
 		assertEquals(statCell, false);
 	}
 	
 	@Test
 	public void testcheckLifeDeadOverpopulation() {
-		cell.setStateCell(true);
-		cell.checkLife(5);
-		statCell = cell.getStateCell();
+		Cell.setStateCell(true);
+		Cell.checkLife(5);
+		statCell = Cell.getStateCell();
 		assertEquals(statCell, false);
+	}
+	
+	
+	@Test
+	public void countNeighbors() {
+		int nNeighbors = Cell.nNeighbors(2);
+		assertEquals(nNeighbors, 2);
 	}
 	
 }
