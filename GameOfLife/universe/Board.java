@@ -2,6 +2,8 @@ package universe;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.util.Random;
 
 
@@ -15,23 +17,35 @@ public class Board  extends JPanel {
 	private static int[][] univers;
 	private static int[][] uni;
 	
-	private static  int cols = 80;//1024; //512;
-	private static  int rows = 80; //1024; //512;
+	private static  int cols = 150;//1024; //512;
+	private static  int rows = 150; //1024; //512;
 	
 	
-
+	private static int sizeCell = 4;
 
 	private Color dead = new Color(0,0,0);
 	private Color live = new Color(255,255,255);
+	private Color colorLinea = new Color(150,150,150);
 	
 	private static Cell cells;
 	
 	public static boolean active = true;
-	private static int generation = 0;
+	public static int generation = 0;
 	private static int aLive = 0;
 
 
 	public  Board(){
+		
+
+		
+		initUnivers();
+		randomLive();
+		
+		cells =  new Cell();
+		
+	}
+	
+	public static void initUnivers(){
 		
 		int nCols = 0;
 		int nRows = 0;
@@ -48,20 +62,13 @@ public class Board  extends JPanel {
 			nCols++;
 		}
 		
-
-		randomLive();
-		
-		cells =  new Cell();
-		
 	}
 	
-	
-	
-	public void randomLive(){
+	public static void randomLive(){
 		
 		int ranRows;
 		int ranCols;
-		int ranTeil = new Random().nextInt(50); 
+		int ranTeil = new Random().nextInt(150); 
 		
 		for(int x=0; x<ranTeil;x++){
 			
@@ -93,7 +100,7 @@ public class Board  extends JPanel {
 	public void  paint(Graphics g){
 		
 	
-	        
+		
 		aLive=0;
 		
 		//univers = cells.getUni();
@@ -112,7 +119,9 @@ public class Board  extends JPanel {
 			g.drawString("Generation: "+generation, 1000, 25);
 			g.drawString("Activo: "+active, 1000, 60);
 			g.setColor( piantDeadLive(univers[rowsF][colsF]) );
-			g.fillRect(rowsF*4,colsF*4,4,4); 
+			g.fillRect(rowsF*sizeCell,colsF*sizeCell,sizeCell,sizeCell); 
+			
+			
 			colsF++;
 		
 		}
@@ -126,7 +135,7 @@ public class Board  extends JPanel {
 		
 	}
 	
-	
+
 	
 	
 	public static int getCols() {

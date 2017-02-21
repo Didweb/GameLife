@@ -5,11 +5,14 @@ public class Cell {
 	
 	private static int state;
 	private static int maxLive = 3;
-	private static int minLive = 1;
+	private static int minLive = 2;
 	private static int nBorn = 2;
 	private static int neighbors = 0;
 	
 	private static int[][] uniEnd;
+	
+	
+	private static int[][] convNeighbors = { new int[]{-1,1} , new int[]{-1,0}, new int[]{-1,1}, new int[]{0,-1}, new int[]{0,1},new int[]{1,-1},new int[]{1,0} ,new int[]{1,1}};
 	
 	public Cell(){
 		
@@ -85,8 +88,32 @@ public class Cell {
 			}
 			
 			
-			//setStateCell(uni[nRows][nCols]);
+			
 			valueNeig = 0;
+			/*
+			for(int y=0; y<convNeighbors.length; y++){
+				
+				
+				
+				if((nRows-1)+convNeighbors[y][0] < 0 
+						|| (nRows-1)+convNeighbors[y][0] > rows 
+						|| (nCols-1)+convNeighbors[y][1] < 0 
+						|| (nCols-1)+convNeighbors[y][1] > cols ){
+					
+					
+					
+				} else {
+					
+					//System.out.println((nRows+convNeighbors[y][0])+" --- "+(nCols+convNeighbors[y][1]));
+					
+					if(uni[(nRows-1)+convNeighbors[y][0]][(nCols-1)+convNeighbors[y][1]] == 1){
+						valueNeig++;	
+					}
+				}
+				
+			}
+			
+			*/
 			
 			// Rows -1
 			if(nRows-1>=0){
