@@ -5,10 +5,11 @@ public class Cell {
 	
 	private static int state;
 	private static int maxLive = 3;
-	private static int minLive = 2;
-	private static int nBorn = 3;
+	private static int minLive = 1;
+	private static int nBorn = 2;
 	private static int neighbors = 0;
 	
+	private static int[][] uniEnd;
 	
 	public Cell(){
 		
@@ -29,20 +30,28 @@ public class Cell {
 	}
 	
 	
-	public static void checkLife(int nLiveNeighbors){
+	public static int checkLife(int nLiveNeighbors, int valueNow){
 		
-		if(state == 1){
+		int valueLife = 0;
+		
+		if(valueNow == 1){
 		if(nLiveNeighbors > maxLive || nLiveNeighbors < minLive){
 			
-			setStateCell(0);
+			valueLife= 0;
 			}
 		} else {
-			
-			if(nLiveNeighbors == nBorn ){
-				setStateCell(1);
-			}
+			valueLife = 1;
 		}
 		
+		if(valueNow == 0){
+			
+			if(nLiveNeighbors == nBorn ){
+				valueLife = 1;
+			} else {
+				valueLife = 0;
+			}
+		}
+		return valueLife;
 	}
 	
 
@@ -53,21 +62,30 @@ public class Cell {
 		
 	}
 	
-	public static void seeArea(int[][] uni, int cols, int rows){
+	public  static void  seeArea(int[][] uni, int cols, int rows){
+		
+		
 		
 		int nCols = 0;
 		int nRows = 0;
 		int valueNeig;
 		
-		for (int x=0;x<(cols*rows); x++){
+		for (int x=0;x<=(cols*rows); x++){
 			
 			
 			
 			if(nCols == cols ){
 				nCols = 0;
-				nRows++;
+				
+				if(nRows==rows-1){
+					nRows=rows-1;
+				} else {
+				nRows++;}
+
 			}
-			setStateCell(uni[nCols][nRows]);
+			
+			
+			//setStateCell(uni[nRows][nCols]);
 			valueNeig = 0;
 			
 			// Rows -1
@@ -75,17 +93,17 @@ public class Cell {
 				
 				
 				if(nCols-1>=0){
-					if(uni[nCols-1][nRows-1] == 1){
+					if(uni[nRows-1][nCols-1] == 1){
 						valueNeig++;	
 					}
 				}
 				
-				if(uni[nCols][nRows-1] == 1){
+				if(uni[nRows-1][nCols] == 1){
 					valueNeig++;	
 				}
 				
-				if(nCols+1<=cols){
-					if(uni[nCols+1][nRows-1] == 1){
+				if(nCols+1<=cols-1){
+					if(uni[nRows-1][nCols+1] == 1){
 						valueNeig++;	
 					}
 				}
@@ -95,14 +113,15 @@ public class Cell {
 			
 			// Rows =
 			if(nCols-1>=0){
-				if(uni[nCols-1][nRows] == 1){
+				if(uni[nRows][nCols-1] == 1){
 					valueNeig++;	
 				}
 			}
 			
 			
-			if(nCols+1<=cols){
-				if(uni[nCols+1][nRows] == 1){
+			if(nCols+1<=cols-1){
+				
+				if(uni[nRows][nCols+1] == 1){
 					valueNeig++;	
 				}
 			}
@@ -110,38 +129,47 @@ public class Cell {
 			
 			
 			// Rows +1
-			if(nRows+1<=rows){
+			if(nRows+1<=rows-1){
 				
 				
 				if(nCols-1>=0){
-					if(uni[nCols-1][nRows+1] == 1){
+					if(uni[nRows+1][nCols-1] == 1){
 						valueNeig++;	
 					}
 				}
 				
-				if(uni[nCols][nRows+1] == 1){
+				if(uni[nRows+1][nCols] == 1){
 					valueNeig++;	
 				}
 				
-				if(nCols+1<=cols){
-					if(uni[nCols+1][nRows+1] == 1){
+				if(nCols+1<=cols-1){
+					if(uni[nRows+1][nCols+1] == 1){
 						valueNeig++;	
 					}
 				}
 				
 			}
 			
+		
 			
-			checkLife(valueNeig);
-			uni[nCols][nRows] = getStateCell();
+			
+			uni[nRows][nCols] = checkLife(valueNeig, uni[nRows][nCols] );
+			
 			
 			nCols++;
 				
 		}
 		
+		uniEnd = uni;
+		
 		
 		
 	}
 	
+	
+	public int[][] getUni(){
+		
+		return uniEnd;
+	}
 	
 }

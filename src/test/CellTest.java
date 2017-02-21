@@ -8,53 +8,53 @@ import cell.Cell;
 
 
 public class CellTest {
-	boolean statCell;
+	int statCell;
 
 
 	@Test
 	public void testGetStateCell() {
 		statCell = Cell.getStateCell();
-		assertEquals(statCell, false);
+		assertEquals(statCell, 0);
 	}
 
 	@Test
 	public void testSetStateCell() {
-		Cell.setStateCell(true);
+		Cell.setStateCell(1);
 		statCell = Cell.getStateCell();
-		assertEquals(statCell, true);
+		assertEquals(statCell, 1);
 	}
 
 	
 	@Test
 	public void testcheckLifeNoBorn() {
-		Cell.setStateCell(false);
-		Cell.checkLife(2);
+		Cell.setStateCell(0);
+		Cell.checkLife(2,1);
 		statCell = Cell.getStateCell();
-		assertEquals(statCell, false);
+		assertEquals(statCell, 0);
 	}
 	
 	@Test
 	public void testcheckLifeBorn() {
-		Cell.setStateCell(false);
-		Cell.checkLife(3);
+		Cell.setStateCell(0);
+		Cell.checkLife(3,1);
 		statCell = Cell.getStateCell();
-		assertEquals(statCell, true);
+		assertEquals(statCell, 1);
 	}
 	
 	@Test
 	public void testcheckLifeDeadSolitude() {
-		Cell.setStateCell(true);
-		Cell.checkLife(1);
+		Cell.setStateCell(1);
+		Cell.checkLife(1,1);
 		statCell = Cell.getStateCell();
-		assertEquals(statCell, false);
+		assertEquals(statCell, 0);
 	}
 	
 	@Test
 	public void testcheckLifeDeadOverpopulation() {
-		Cell.setStateCell(true);
-		Cell.checkLife(5);
+		Cell.setStateCell(1);
+		Cell.checkLife(5,1);
 		statCell = Cell.getStateCell();
-		assertEquals(statCell, false);
+		assertEquals(statCell, 0);
 	}
 	
 	
