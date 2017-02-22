@@ -1,5 +1,6 @@
 package layout;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
@@ -19,12 +20,14 @@ public class Mark_Layout extends JFrame{
 		
 		setBounds(1200,1000,1200,1000);
 		
-		Panel_Layout sheet = new Panel_Layout();
+		Buttons_Layout sheetButtons = new Buttons_Layout();
+		Univers_Layout sheetUnivers = new Univers_Layout();
 		
 		
-		sheet.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		
-		add(sheet);
+		add(sheetButtons, BorderLayout.EAST);
+		
+		add(sheetUnivers, BorderLayout.CENTER);
 		
 	}
 

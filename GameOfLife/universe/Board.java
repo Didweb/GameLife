@@ -116,8 +116,7 @@ public class Board  extends JPanel {
 				rowsF++;
 			}
 			
-			g.drawString("Generation: "+generation, 1000, 25);
-			g.drawString("Activo: "+active, 1000, 60);
+			
 			g.setColor( piantDeadLive(univers[rowsF][colsF]) );
 			g.fillRect(rowsF*sizeCell,colsF*sizeCell,sizeCell,sizeCell); 
 			
