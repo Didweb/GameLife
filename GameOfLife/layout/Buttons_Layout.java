@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import universe.Board;
+import universe.Cell;
 
 public class Buttons_Layout extends JPanel {
 
@@ -23,10 +24,17 @@ public class Buttons_Layout extends JPanel {
 	private static JTextField infoCols;
 	public static JButton buttonUpdateCR;
 	
+	
+	private static JTextField maxLive;
+	private static JTextField minLive;
+	private static JTextField born;
+	
 	public static JButton buttonNew;
 	public static JButton buttonStop;
 	
 	public static JLabel txtGeneration;
+	
+	
 	
 	public Buttons_Layout(){
 		
@@ -36,6 +44,7 @@ public class Buttons_Layout extends JPanel {
 		
 		
 		dimensionButtons();
+		parametresGeneral();
 		basicButtons();
 
 		
@@ -50,6 +59,30 @@ public class Buttons_Layout extends JPanel {
 		
 		buttonStop = new JButton("Stop");
 		add(buttonStop);
+	}
+	
+	private void parametresGeneral(){
+		
+		JLabel txtmaxLi = new JLabel("MaxLive:  ");
+		maxLive = new JTextField(""+Board.getCells().getMaxLive(), 10);
+		
+		JLabel txtminLi = new JLabel("MinLive:  ");
+		minLive = new JTextField(""+Board.getCells().getMinLive(), 10);
+		
+		
+		JLabel txtNborn = new JLabel("Born:  ");
+		born = new JTextField(""+Board.getCells().getnBorn(), 10);
+		
+		add(txtmaxLi);
+		add(maxLive);
+		
+		add(txtminLi);
+		add(minLive);
+		
+		add(txtNborn);
+		add(born);
+		
+		
 	}
 	
 	

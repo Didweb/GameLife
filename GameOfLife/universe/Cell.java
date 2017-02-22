@@ -20,6 +20,29 @@ public class Cell {
 	}
 	
 	
+	
+	
+	public static int getMaxLive() {
+		return maxLive;
+	}
+
+
+
+
+	public static int getMinLive() {
+		return minLive;
+	}
+
+
+
+
+	public static int getnBorn() {
+		return nBorn;
+	}
+
+
+
+
 	public static int getStateCell(){
 	
 		return state;
@@ -112,8 +135,8 @@ public class Cell {
 				}
 				
 			}
-			
 			*/
+			
 			
 			// Rows -1
 			if(nRows-1>=0){

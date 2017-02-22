@@ -43,8 +43,12 @@ public class Board  extends JPanel  implements Runnable{
 
 
 	
+	public static Cell getCells() {
+		return cells;
+	}
+
 	public static void initUnivers(){
-		
+		generation = 0;
 		int nCols = 0;
 		int nRows = 0;
 		univers = new int[rows][cols];
