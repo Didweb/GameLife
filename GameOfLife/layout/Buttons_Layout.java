@@ -12,20 +12,21 @@ import javax.swing.JTextField;
 
 import universe.Board;
 
-public class Buttons_Layout extends JPanel implements ActionListener{
+public class Buttons_Layout extends JPanel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7522653000315918611L;
 
-	private JTextField infoRows;
-	private JTextField infoCols;
-	private JButton buttonUpdateCR;
+	private static JTextField infoRows;
+	private static JTextField infoCols;
+	static JButton buttonUpdateCR;
 	
 	public Buttons_Layout(){
 		
 		setLayout(new FlowLayout(FlowLayout.LEFT));
+		
 		setBackground(Color.GRAY);
 		
 		
@@ -57,18 +58,24 @@ public class Buttons_Layout extends JPanel implements ActionListener{
 		add(buttonUpdateCR);
 		
 		
+		
 	}
+
+	public static JTextField getInfoRows() {
+		return infoRows;
+	}
+
+	public static JTextField getInfoCols() {
+		return infoCols;
+	}
+
+
+
+
 	
 	
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-			
-				System.out.println("Rows: ");
-			
-			
-		}
+	
 		
 	
 	

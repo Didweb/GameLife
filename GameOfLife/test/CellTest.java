@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import cell.Cell;
+import universe.Cell;
 
 
 public class CellTest {

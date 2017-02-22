@@ -9,11 +9,13 @@ import java.util.Random;
 
 import javax.swing.JPanel;
 
-import cell.Cell;
 
+public class Board  extends JPanel  implements Runnable{
 
-public class Board  extends JPanel {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4106099759895444750L;
 	private static int[][] univers;
 	private static int[][] uni;
 	
@@ -29,21 +31,14 @@ public class Board  extends JPanel {
 	
 	private static Cell cells;
 	
-	public static boolean active = true;
+	public static boolean active = false;
+
+
 	public static int generation = 0;
 	private static int aLive = 0;
 
 
-	public  Board(){
-		
 
-		
-		initUnivers();
-		randomLive();
-		
-		cells =  new Cell();
-		
-	}
 	
 	public static void initUnivers(){
 		
@@ -80,17 +75,34 @@ public class Board  extends JPanel {
 		
 	}
 	
-	public void update(Graphics g){
+	public void mostrar(){
+		
+		repaint();
+		
+		
+	}
+	
+	public  void update(Graphics g){
 		
 		paint(g);   
 		
 	    
 	}
 
+	public static boolean isActive() {
+		return active;
+	}
+
+	public static void setActive(boolean active) {
+		Board.active = active;
+	}
 	
 	
-	public static void updateGeneration(){
+	
+	public  static void updateGeneration(){
 		Cell.seeArea(univers, cols, rows);
+		 
+		
 	}
 
 	public static int[][] getUnivers() {
@@ -134,8 +146,51 @@ public class Board  extends JPanel {
 		
 	}
 	
+	public  void reaction(){
+		//  Thread thread = new Thread("Graficos");
+		  
+		  // thread.start();
+		
+		
+		Thread thread = new Thread(){
+		    public void run(){
+		    	int i = 0;
+				while(isActive()){
+					
+					 try {
+						Thread.sleep(200);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					updateGeneration();
+					mostrar();
+					System.out.println("====****========= "+isActive()+" "+(i++));
+					
+				}
+		    }
+		  };
 
+		  thread.start(); 
+		
+	}
 	
+	
+	@Override
+	public void run() {
+	
+		int i = 0;
+		while(isActive()){
+			
+		
+			updateGeneration();
+			
+			System.out.println("============= "+Board.isActive()+" "+(i++));
+			
+		}
+		
+	}
+
 	
 	public static int getCols() {
 		return cols;
@@ -143,6 +198,14 @@ public class Board  extends JPanel {
 
 	public static int getRows() {
 		return rows;
+	}
+
+	public static void setCols(int cols) {
+		Board.cols = cols;
+	}
+
+	public static void setRows(int rows) {
+		Board.rows = rows;
 	}
 
 	public Color piantDeadLive(int value){

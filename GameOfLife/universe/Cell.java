@@ -1,4 +1,4 @@
-package cell;
+package universe;
 
 public class Cell {
 
