@@ -13,6 +13,8 @@ public class Mark_Layout extends JFrame{
 	
 	private String version = "v.0.2";
 	
+	private boolean pause = false;
+	
 	/**
 	 * 
 	 */
@@ -35,23 +37,25 @@ public class Mark_Layout extends JFrame{
 		
 		add(sheetButtons, BorderLayout.NORTH);
 		add(sheetUnivers, BorderLayout.CENTER);
-		su();
+		lisentActions();
 		
+	}
+	
+	
+	
+	public static void actuGeneration(){
+		Buttons_Layout.txtGeneration.setText("Generation:  "+Univers_Layout.getBoard().getGeneration()+" ");
 	}
 	
 	
 	
 	
 	
-	
-	
-	
-	
-	public void su(){
+	public void lisentActions(){
 		
 	
 	
-		Buttons_Layout.buttonUpdateCR.addActionListener(new ActionListener() {
+		Buttons_Layout.buttonNew.addActionListener(new ActionListener() {
 
 		@Override
 
@@ -60,13 +64,37 @@ public class Mark_Layout extends JFrame{
 			Board.setCols(Integer.parseInt(Buttons_Layout.getInfoCols().getText().trim()));
 			Board.setRows(Integer.parseInt(Buttons_Layout.getInfoRows().getText().trim()));
 			
+			Board.setRows(Integer.parseInt(Buttons_Layout.getInfoRows().getText().trim()));
+			
+			
+			
 			sheetUnivers.setInstanceOfClaseA(this);
-			
-			
-			
+	
 		}
 
 		});
+		
+		
+		
+		Buttons_Layout.buttonStop.addActionListener(new ActionListener() {
+
+			@Override
+
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				if(pause){
+				
+				} else {
+					
+				}
+				pause = !pause;
+				
+		
+			}
+
+			});
+		
 
 	}
 }

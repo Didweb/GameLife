@@ -28,6 +28,14 @@ public class Univers_Layout extends JPanel {
 
 	
 	
+	public static Board getBoard() {
+		return board;
+	}
+
+
+
+
+
 	public  Univers_Layout(){
 		
 		setLayout(new BorderLayout());
@@ -52,11 +60,7 @@ public class Univers_Layout extends JPanel {
 		board.randomLive();
 		
 		board.reaction();
-		//Board.updateGeneration();
 		
-		
-		
-		//publUniver();
 		
 	}
 

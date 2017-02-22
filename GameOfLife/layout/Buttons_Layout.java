@@ -21,7 +21,12 @@ public class Buttons_Layout extends JPanel {
 
 	private static JTextField infoRows;
 	private static JTextField infoCols;
-	static JButton buttonUpdateCR;
+	public static JButton buttonUpdateCR;
+	
+	public static JButton buttonNew;
+	public static JButton buttonStop;
+	
+	public static JLabel txtGeneration;
 	
 	public Buttons_Layout(){
 		
@@ -30,22 +35,35 @@ public class Buttons_Layout extends JPanel {
 		setBackground(Color.GRAY);
 		
 		
-		textUnivers();
-		
-		add(new JButton("New"));
-		
-		add(new JButton("Stop"));
+		dimensionButtons();
+		basicButtons();
+
 		
 	}
 	
-	private void textUnivers(){
+	private void basicButtons(){
 		
+		
+		buttonNew = new JButton("New");
+		add(buttonNew);
+		
+		
+		buttonStop = new JButton("Stop");
+		add(buttonStop);
+	}
+	
+	
+	private void dimensionButtons(){
+		
+		txtGeneration = new JLabel("Generation:  "+Univers_Layout.getBoard().getGeneration()+" "); 
 		
 		JLabel txtRows = new JLabel("Rows:  ");
 		infoRows = new JTextField(""+Board.getRows(), 10);
 		
 		JLabel txtCols = new JLabel("Cols:  ");
 		infoCols = new JTextField(""+Board.getCols(), 10);
+		
+		add(txtGeneration);
 		
 		add(txtRows);
 		add(infoRows);

@@ -9,6 +9,8 @@ import java.util.Random;
 
 import javax.swing.JPanel;
 
+import layout.Mark_Layout;
+
 
 public class Board  extends JPanel  implements Runnable{
 
@@ -37,6 +39,7 @@ public class Board  extends JPanel  implements Runnable{
 	public static int generation = 0;
 	private static int aLive = 0;
 
+	private  Thread thread;
 
 
 	
@@ -152,7 +155,7 @@ public class Board  extends JPanel  implements Runnable{
 		  // thread.start();
 		
 		
-		Thread thread = new Thread(){
+		thread = new Thread(){
 		    public void run(){
 		    	int i = 0;
 				while(isActive()){
@@ -165,6 +168,8 @@ public class Board  extends JPanel  implements Runnable{
 					}
 					updateGeneration();
 					mostrar();
+					Mark_Layout.actuGeneration();
+					
 					System.out.println("====****========= "+isActive()+" "+(i++));
 					
 				}
@@ -175,6 +180,8 @@ public class Board  extends JPanel  implements Runnable{
 		
 	}
 	
+	
+
 	
 	@Override
 	public void run() {
@@ -206,6 +213,18 @@ public class Board  extends JPanel  implements Runnable{
 
 	public static void setRows(int rows) {
 		Board.rows = rows;
+	}
+
+	
+	
+	
+	
+	public static void setGeneration(int generation) {
+		Board.generation = generation;
+	}
+
+	public static int getGeneration() {
+		return generation;
 	}
 
 	public Color piantDeadLive(int value){
