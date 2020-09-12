@@ -2,8 +2,6 @@ package layout;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,9 +13,7 @@ import universe.Cell;
 
 public class Buttons_Layout extends JPanel {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 7522653000315918611L;
 
 	private static JTextField infoRows;
@@ -64,14 +60,17 @@ public class Buttons_Layout extends JPanel {
 	private void parametresGeneral(){
 		
 		JLabel txtmaxLi = new JLabel("MaxLive:  ");
-		maxLive = new JTextField(""+Board.getCells().getMaxLive(), 10);
+		Board.getCells();
+		maxLive = new JTextField(""+Cell.getMaxLive(), 10);
 		
 		JLabel txtminLi = new JLabel("MinLive:  ");
-		minLive = new JTextField(""+Board.getCells().getMinLive(), 10);
+		Board.getCells();
+		minLive = new JTextField(""+Cell.getMinLive(), 10);
 		
 		
 		JLabel txtNborn = new JLabel("Born:  ");
-		born = new JTextField(""+Board.getCells().getnBorn(), 10);
+		Board.getCells();
+		born = new JTextField(""+Cell.getnBorn(), 10);
 		
 		add(txtmaxLi);
 		add(maxLive);
@@ -88,7 +87,8 @@ public class Buttons_Layout extends JPanel {
 	
 	private void dimensionButtons(){
 		
-		txtGeneration = new JLabel("Generation:  "+Univers_Layout.getBoard().getGeneration()+" "); 
+		Univers_Layout.getBoard();
+		txtGeneration = new JLabel("Generation:  "+Board.getGeneration()+" "); 
 		
 		JLabel txtRows = new JLabel("Rows:  ");
 		infoRows = new JTextField(""+Board.getRows(), 10);

@@ -1,7 +1,6 @@
 package layout;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -44,7 +43,8 @@ public class Mark_Layout extends JFrame{
 	
 	
 	public static void actuGeneration(){
-		Buttons_Layout.txtGeneration.setText("Generation:  "+Univers_Layout.getBoard().getGeneration()+" ");
+		Univers_Layout.getBoard();
+		Buttons_Layout.txtGeneration.setText("Generation:  "+Board.getGeneration()+" ");
 	}
 	
 	
