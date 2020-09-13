@@ -1,7 +1,6 @@
 package layout;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,7 +25,7 @@ public class Mark_Layout extends JFrame{
 	
 	public Mark_Layout(){
 		
-		setTitle("Game of Life "+version+" | http://github.com/DidWeb | Eduardo Pinuaga");
+		setTitle("Game of Life  "+version+" | http://github.com/DidWeb | Eduardo Pinuaga");
 		
 		setBounds(1200,1000,1200,1000);
 		
@@ -39,12 +38,14 @@ public class Mark_Layout extends JFrame{
 		add(sheetUnivers, BorderLayout.CENTER);
 		lisentActions();
 		
+		
 	}
 	
 	
 	
 	public static void actuGeneration(){
-		Buttons_Layout.txtGeneration.setText("Generation:  "+Univers_Layout.getBoard().getGeneration()+" ");
+		Univers_Layout.getBoard();
+		Buttons_Layout.txtGeneration.setText("Generation:  "+Board.getGeneration()+" ");
 	}
 	
 	

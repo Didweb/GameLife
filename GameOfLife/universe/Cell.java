@@ -11,9 +11,6 @@ public class Cell {
 	
 	private static int[][] uniEnd;
 	
-	
-	private static int[][] convNeighbors = { new int[]{-1,1} , new int[]{-1,0}, new int[]{-1,1}, new int[]{0,-1}, new int[]{0,1},new int[]{1,-1},new int[]{1,0} ,new int[]{1,1}};
-	
 	public Cell(){
 		
 		state = 0;

@@ -2,8 +2,6 @@ package universe;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.MouseInfo;
-import java.awt.Point;
 import java.util.Random;
 
 
@@ -19,17 +17,15 @@ public class Board  extends JPanel  implements Runnable{
 	 */
 	private static final long serialVersionUID = -4106099759895444750L;
 	private static int[][] univers;
-	private static int[][] uni;
 	
-	private static  int cols = 150;//1024; //512;
-	private static  int rows = 150; //1024; //512;
+	private static  int cols = 100; //512; //1024; //512;
+	private static  int rows = 100; //512; //1024; //512;
 	
 	
 	private static int sizeCell = 4;
 
 	private Color dead = new Color(0,0,0);
-	private Color live = new Color(255,255,255);
-	private Color colorLinea = new Color(150,150,150);
+	private Color live = new Color(255,255,0);
 	
 	private static Cell cells;
 	
@@ -80,9 +76,10 @@ public class Board  extends JPanel  implements Runnable{
 			univers[ranRows][ranCols] = 1;
 		}
 		
+		
 	}
 	
-	public void mostrar(){
+	public  void mostrar(){
 		
 		repaint();
 		
@@ -154,11 +151,8 @@ public class Board  extends JPanel  implements Runnable{
 	}
 	
 	public  void reaction(){
-		//  Thread thread = new Thread("Graficos");
-		  
-		  // thread.start();
-		
-		
+	
+
 		thread = new Thread(){
 		    public void run(){
 		    	int i = 0;
@@ -188,7 +182,7 @@ public class Board  extends JPanel  implements Runnable{
 
 	
 	@Override
-	public void run() {
+	public  void run() {
 	
 		int i = 0;
 		while(isActive()){
