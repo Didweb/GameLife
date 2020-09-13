@@ -18,8 +18,8 @@ public class Board  extends JPanel  implements Runnable{
 	private static final long serialVersionUID = -4106099759895444750L;
 	private static int[][] univers;
 	
-	private static  int cols = 1024; //512;
-	private static  int rows = 1024; //512;
+	private static  int cols = 100; //512; //1024; //512;
+	private static  int rows = 100; //512; //1024; //512;
 	
 	
 	private static int sizeCell = 4;
@@ -76,9 +76,10 @@ public class Board  extends JPanel  implements Runnable{
 			univers[ranRows][ranCols] = 1;
 		}
 		
+		
 	}
 	
-	public void mostrar(){
+	public  void mostrar(){
 		
 		repaint();
 		
@@ -181,7 +182,7 @@ public class Board  extends JPanel  implements Runnable{
 
 	
 	@Override
-	public void run() {
+	public  void run() {
 	
 		int i = 0;
 		while(isActive()){

@@ -38,6 +38,7 @@ public class Univers_Layout extends JPanel {
 		setBackground(Color.GRAY);
 		Board.initUnivers();
 		Board.randomLive();
+		board.reaction();
 		add(board);
 		
 		

@@ -25,7 +25,7 @@ public class Mark_Layout extends JFrame{
 	
 	public Mark_Layout(){
 		
-		setTitle("Game of Life "+version+" | http://github.com/DidWeb | Eduardo Pinuaga");
+		setTitle("Game of Life  "+version+" | http://github.com/DidWeb | Eduardo Pinuaga");
 		
 		setBounds(1200,1000,1200,1000);
 		
@@ -37,6 +37,7 @@ public class Mark_Layout extends JFrame{
 		add(sheetButtons, BorderLayout.NORTH);
 		add(sheetUnivers, BorderLayout.CENTER);
 		lisentActions();
+		
 		
 	}
 	

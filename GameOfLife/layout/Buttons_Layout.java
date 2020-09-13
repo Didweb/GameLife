@@ -40,20 +40,23 @@ public class Buttons_Layout extends JPanel {
 		
 		
 		dimensionButtons();
-		parametresGeneral();
 		basicButtons();
+		parametresGeneral();
+		
 
 		
 	}
 	
 	private void basicButtons(){
 		
-		
+		JLabel txtNew = new JLabel("NEW");
 		buttonNew = new JButton("New");
+		add(txtNew);
 		add(buttonNew);
 		
-		
+		JLabel txtStop = new JLabel("STOP");
 		buttonStop = new JButton("Stop");
+		add(txtStop);
 		add(buttonStop);
 	}
 	
